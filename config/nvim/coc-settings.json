@@ -1,0 +1,11 @@
+{
+    "suggest.maxCompleteItemCount": 20,
+    "coc.preferences.formatOnSaveFiletypes": [ "javascript",
+        "typescript",
+        "json"
+    ],
+    "eslint.filetypes": [
+        "javascript",
+        "typescript"
+    ]
+}
