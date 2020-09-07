@@ -2,8 +2,19 @@ scriptencoding utf-8
 source ~/.config/nvim/plugins.vim
 
 """""""""""""""""""
+"  PALENIGHT THEME  "
+"""""""""""""""""""
+colorscheme palenight
+
+highlight Pmenu ctermfg=15 ctermbg=61 cterm=NONE guifg=#f8f8f2 guibg=646e96 gui=NONE
+highlight PmenuSel ctermfg=16 ctermbg=84 cterm=bold guifg=#282a36 guibg=#50fa7b gui=NONE
+
+"""""""""""""""""""
 " GLOBAL SETTINGS "
 """""""""""""""""""
+
+syntax enable
+filetype plugin indent on
 
 " Set leader key
 let g:mapleader=','
@@ -23,11 +34,17 @@ set shiftwidth=4
 """""""""""""""""
 "      UI       "
 """""""""""""""""
+
+set background=dark
+
+" set colorscheme
+colorscheme palenight
+
 " Enable true color support
 set termguicolors
 
 " Vim airline theme
-let g:airline_theme='space'
+let g:airline_theme='palenight'
 
 " Change vertical split character to be a space (essentially hide it)
 set fillchars+=vert:.
@@ -40,6 +57,10 @@ set noshowmode
 
 " Set floating window to be slightly transparent
 set winbl=10
+
+if (has("nvim"))
+    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+endif
 
 " set hybrid line numbers
 set number relativenumber
@@ -120,10 +141,10 @@ endtry
 "   <leader>t - Browse list of files in current directory
 "   <leader>g - Search current directory for occurences of given term and close window if no results
 "   <leader>j - Search current directory for occurences of word under cursor
-nmap <leader>lo :Denite buffer<CR>
-nmap <leader>ld :DeniteProjectDir file/rec<CR>
-nnoremap <leader>lg :<C-u>Denite grep:. -no-empty<CR>
-nnoremap <leader>lgc :<C-u>DeniteCursorWord grep:.<CR>
+nmap <leader>; :Denite buffer<CR>
+nmap <leader>t :DeniteProjectDir file/rec<CR>
+nnoremap <leader>g :<C-u>Denite grep:. -no-empty<CR>
+nnoremap <leader>j :<C-u>DeniteCursorWord grep:.<CR>
 
 " Define mappings while in 'filter' mode
 "   <C-o>         - Switch to normal mode inside of search results
@@ -183,3 +204,5 @@ function! s:denite_my_settings() abort
   nnoremap <silent><buffer><expr> <C-h>
   \ denite#do_map('do_action', 'split')
 endfunction>
+
+inoremap <silent><expr> <c-space> coc#refresh()
