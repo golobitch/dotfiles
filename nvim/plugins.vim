@@ -18,7 +18,7 @@ call plug#begin('~/.config/nvim/plugged')
 " Denite / Fuzzy finding, buffer management
 Plug 'Shougo/denite.nvim'
 
-" Coc / Intelisense plugin
+" Coc / Intelisense plugin ... use release branch
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 call plug#end()
